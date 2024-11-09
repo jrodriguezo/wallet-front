@@ -1,50 +1,71 @@
-# React + TypeScript + Vite
+# Wallet App - Your Personal Finance Manager 💰
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+Wallet App is a simple web application developed with React and TypeScript that allows users to manage their finances, including account registration, login, wallet visualization and money transactions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## How to Run the Project on Localhost
 
-## Expanding the ESLint configuration
+To develop and run the project on your local machine, follow these steps:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Supported Node versions >= 16.15.1 and < 20.9.0
 
-- Configure the top-level `parserOptions` property like this:
+1. **Clone the repository**:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+   ```bash
+   git clone https://github.com/jrodriguezo/wallet-front
+   cd wallet-front
+   ```
+2. **Install dependencies**:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+   ```bash
+    npm install
+   ```
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+3. **Start the development server**:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+   ```bash
+    npm run dev
+   ```
+
+4. **Enjoy at http://localhost:5173**
+
+## Available Scripts for Testing
+Here are some useful commands you can use during development:
+
+1. **Run unit tests with React Testing Library**:
+
+   ```bash
+   npm run test
+   ```
+   
+   - The result must be similar to:
+   
+ Test Files  3 passed (3)
+      Tests  7 passed (7)
+
+## Technologies Used
+
+This project is built using the following technologies:
+
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: A superset of JavaScript that adds optional static types.
+- **Vite**: A modern framework for web application development that allows for fast reloading.
+- **Tailwind CSS**: A CSS framework for designing without leaving HTML.
+- **Shadcn/ui**: Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source.
+
+## Important Packages
+
+Here’s a list of key packages used in this project:
+
+### Dependencies
+
+- `react-hook-form`: Form management in React.
+- `uuid`: Universally unique identifier.
+
+### DevDependencies
+
+- `vite`: Build and development tool.
+- `eslint`: Linting tool to ensure code quality.
+- `typescript`: Support for TypeScript.
+
