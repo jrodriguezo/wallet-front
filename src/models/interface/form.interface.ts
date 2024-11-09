@@ -1,3 +1,5 @@
+import { Amount } from "@/models/types/form.type";
+
 export interface TransferFormData {
   fromUser: string;
   toUser: string;
@@ -5,7 +7,7 @@ export interface TransferFormData {
 }
 
 export interface DepositFormData {
-  amount: number;
+  amount: Amount;
 }
 
 export interface LoginFormData {

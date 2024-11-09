@@ -8,14 +8,18 @@ import {
   DepositFormData,
   TransferFormData,
 } from "@/models/interface/form.interface";
+import { deposit } from "@/store/slices/operationsSlice";
+import { useDispatch } from "react-redux";
 
 export function Home() {
+  const dispatch = useDispatch();
   const handleTransfer = (data: TransferFormData) => {
     console.log({ ["transfer form"]: data });
   };
 
   const handleDeposit = (data: DepositFormData) => {
     console.log({ ["deposit form"]: data });
+    dispatch(deposit(data));
   };
 
   return (

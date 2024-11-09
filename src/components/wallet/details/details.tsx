@@ -1,13 +1,15 @@
-import { Props } from "@/models/props";
 import { CardContent } from "@/components/ui/card";
 import { CircleDollarSign } from "lucide-react";
 import { generateWalletAddress } from "./utils";
 import { CURRENCY } from "@/config";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
 
-function Details(props: Props) {
+function Details() {
   const mySeedPhrase = "seed";
   const walletAddress = generateWalletAddress(mySeedPhrase);
-  const balance = 1000;
+  const balance = useSelector((state: RootState) => state.operations.balance);
+
   return (
     <>
       <CardContent>
