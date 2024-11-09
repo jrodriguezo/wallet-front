@@ -18,12 +18,10 @@ export function Home() {
 
   const dispatch = useDispatch();
   const handleTransfer = (data: TransferFormData) => {
-    console.log({ ["transfer form"]: data });
     dispatch(transfer(data));
   };
 
   const handleDeposit = (data: DepositFormData) => {
-    console.log({ ["deposit form"]: data });
     dispatch(deposit(data));
   };
 

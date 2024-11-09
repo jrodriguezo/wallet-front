@@ -20,11 +20,11 @@ export const useAuth = () => {
   );
 
   const handleLogin = (data: LoginFormData) => {
-    console.log({ ["login form"]: data });
     dispatch(login(data));
   };
 
   const handleRegister = (data: RegisterFormData) => {
+    // do nothing, no backend available
     console.log({ ["register form"]: data });
   };
 
