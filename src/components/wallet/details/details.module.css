@@ -1,0 +1,27 @@
+.movements {
+  display: flex;
+  flex-direction: column;
+  max-height: 10rem;
+  overflow-y: auto;
+  scrollbar-color: hsl(var(--muted-foreground)) transparent;
+  margin-left: 40px;
+}
+
+.movements li {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.movements li > div {
+  width: fit-content;
+  margin-left: auto;
+}
+
+.movements li header,
+.movements li footer {
+  display: flex;
+  justify-content: space-between;
+}

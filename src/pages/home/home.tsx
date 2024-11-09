@@ -14,11 +14,13 @@ import { RootState } from "@/store";
 import { TransactionType } from "@/models/enums/operations.enum";
 
 export function Home() {
-  const { errors } = useSelector((state: RootState) => state.operations);
+  const { errors, address } = useSelector(
+    (state: RootState) => state.operations
+  );
 
   const dispatch = useDispatch();
   const handleTransfer = (data: TransferFormData) => {
-    dispatch(transfer(data));
+    dispatch(transfer({ fromUser: address, ...data }));
   };
 
   const handleDeposit = (data: DepositFormData) => {

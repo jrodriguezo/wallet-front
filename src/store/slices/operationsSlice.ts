@@ -1,16 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   DepositFormData,
-  TransferFormData,
+  ExtendedTransferFromData,
 } from "@/models/interface/form.interface";
 import { TransactionType } from "@/models/enums/operations.enum";
+import { Amount } from "@/models/types/form.type";
+import { generateWalletAddress } from "@/components/wallet/details/utils";
 
 type type = TransactionType.DEPOSIT | TransactionType.TRANSFER;
 
 interface OperationsState {
-  balance: number;
+  address: string;
+  balance: Amount;
   transactions: Array<{
-    amount: number;
+    amount: string;
     from?: string;
     to?: string;
     type: type;
@@ -19,6 +22,7 @@ interface OperationsState {
 }
 
 const initialState: OperationsState = {
+  address: generateWalletAddress("seed"),
   balance: 0,
   transactions: [],
   errors: {
@@ -42,15 +46,18 @@ const operationsSlice = createSlice({
 
       if (isValidAmount) return;
       state.balance += Number(amount);
-      state.transactions.push({ type: TransactionType.DEPOSIT, amount });
+      state.transactions.push({
+        type: TransactionType.DEPOSIT,
+        amount: amount.toString(),
+      });
     },
-    transfer: (state, action: PayloadAction<TransferFormData>) => {
+    transfer: (state, action: PayloadAction<ExtendedTransferFromData>) => {
       const { amount, fromUser, toUser } = action.payload;
       if (state.balance >= amount) {
         state.errors[TransactionType.TRANSFER] = "";
         state.balance -= amount;
         state.transactions.push({
-          amount,
+          amount: (-amount).toString(),
           from: fromUser,
           to: toUser,
           type: TransactionType.TRANSFER,

@@ -25,20 +25,6 @@ function TransferForm({ onSubmit, error }: TransferFormProps) {
         <CardTitle className="mb-4">Transfer money</CardTitle>
         <div className="grid w-full items-center gap-4">
           <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="fromUser">From Account</Label>
-            <Input
-              type="text"
-              id="fromUser"
-              placeholder="Type the sender's account"
-              {...register("fromUser", { required: true })}
-            />
-            {errors.fromUser && (
-              <span className="text-red-500 text-sm">
-                This field is required
-              </span>
-            )}
-          </div>
-          <div className="flex flex-col space-y-1.5">
             <Label htmlFor="toUser">To Account</Label>
             <Input
               type="text"

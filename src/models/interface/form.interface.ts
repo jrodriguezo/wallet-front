@@ -8,9 +8,12 @@ import {
 } from "@/models/types/form.type";
 
 export interface TransferFormData {
-  fromUser: Account;
   toUser: Account;
   amount: Amount;
+}
+
+export interface ExtendedTransferFromData extends TransferFormData {
+  fromUser: Account;
 }
 
 export interface DepositFormData {
