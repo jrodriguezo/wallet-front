@@ -9,17 +9,24 @@ import {
   LoginFormData,
   RegisterFormData,
 } from "@/models/interface/form.interface";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "@/store/slices/authSlice";
+import { RootState } from "@/store";
 
 export function AuthHOC({ children }: Pick<Props, "children">) {
   const [isLogin, setIsLogin] = useState(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const isAuthenticated = useSelector(
+    (state: RootState) => state.auth.isAuthenticated
+  );
+  const dispatch = useDispatch();
+
   const handleAuth = () => {
     setIsLogin((prev) => !prev);
   };
 
   const handleLogin = (data: LoginFormData) => {
-    setIsAuthenticated(true);
     console.log({ ["login form"]: data });
+    dispatch(login(data));
   };
 
   const handleRegister = (data: RegisterFormData) => {
