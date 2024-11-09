@@ -12,8 +12,6 @@ function Details() {
     (state: RootState) => state.operations
   );
 
-  console.log({ transactions });
-
   return (
     <>
       <CardContent>
@@ -39,8 +37,9 @@ function Details() {
                 .slice()
                 .reverse()
                 .map((transaction) => {
-                  const { type, from, to, amount } = transaction;
+                  const { type, from, to, amount, balance } = transaction;
                   const isNegativeAmount = Number(amount) < 0;
+
                   return (
                     <li key={uuid()}>
                       <header>
@@ -70,6 +69,7 @@ function Details() {
                         >{`${isNegativeAmount ? "-" : "+"}${
                           CURRENCY.DOLLAR
                         }${Math.abs(Number(amount))}`}</small>
+                        <small>{balance}</small>
                       </footer>
                     </li>
                   );

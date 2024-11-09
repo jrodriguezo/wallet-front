@@ -13,6 +13,7 @@ interface OperationsState {
   address: string;
   balance: Amount;
   transactions: Array<{
+    balance: string;
     amount: string;
     from?: string;
     to?: string;
@@ -49,6 +50,7 @@ const operationsSlice = createSlice({
       state.transactions.push({
         type: TransactionType.DEPOSIT,
         amount: amount.toString(),
+        balance: state.balance.toString(),
       });
     },
     transfer: (state, action: PayloadAction<ExtendedTransferFromData>) => {
@@ -73,6 +75,7 @@ const operationsSlice = createSlice({
         from: fromUser,
         to: toUser,
         type: TransactionType.TRANSFER,
+        balance: state.balance.toString(),
       });
     },
   },
