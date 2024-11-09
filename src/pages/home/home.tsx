@@ -8,13 +8,18 @@ import {
   DepositFormData,
   TransferFormData,
 } from "@/models/interface/form.interface";
-import { deposit } from "@/store/slices/operationsSlice";
-import { useDispatch } from "react-redux";
+import { deposit, transfer } from "@/store/slices/operationsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store";
+import { TransactionType } from "@/models/enums/operations.enum";
 
 export function Home() {
+  const { errors } = useSelector((state: RootState) => state.operations);
+
   const dispatch = useDispatch();
   const handleTransfer = (data: TransferFormData) => {
     console.log({ ["transfer form"]: data });
+    dispatch(transfer(data));
   };
 
   const handleDeposit = (data: DepositFormData) => {
@@ -31,8 +36,14 @@ export function Home() {
           </CardHeader>
           <article>
             <Details />
-            <DepositForm onSubmit={handleDeposit} />
-            <TransferForm onSubmit={handleTransfer} />
+            <DepositForm
+              error={errors[TransactionType.DEPOSIT]}
+              onSubmit={handleDeposit}
+            />
+            <TransferForm
+              error={errors[TransactionType.TRANSFER]}
+              onSubmit={handleTransfer}
+            />
           </article>
         </AuthHOC>
       </Card>

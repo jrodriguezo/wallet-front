@@ -1,9 +1,16 @@
-import { Amount } from "@/models/types/form.type";
+import {
+  Account,
+  Amount,
+  Email,
+  Error,
+  Name,
+  Password,
+} from "@/models/types/form.type";
 
 export interface TransferFormData {
-  fromUser: string;
-  toUser: string;
-  amount: number;
+  fromUser: Account;
+  toUser: Account;
+  amount: Amount;
 }
 
 export interface DepositFormData {
@@ -11,12 +18,12 @@ export interface DepositFormData {
 }
 
 export interface LoginFormData {
-  email: string;
-  password: string;
+  email: Email;
+  password: Password;
 }
 
 export interface RegisterFormData extends LoginFormData {
-  name: string;
+  name: Name;
 }
 
 export interface RegisterFormProps {
@@ -29,8 +36,10 @@ export interface LoginFormProps {
 
 export interface TransferFormProps {
   onSubmit: (data: TransferFormData) => void;
+  error: Error;
 }
 
 export interface DepositFormProps {
   onSubmit: (data: DepositFormData) => void;
+  error: Error;
 }

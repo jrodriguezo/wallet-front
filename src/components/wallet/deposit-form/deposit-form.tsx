@@ -8,7 +8,7 @@ import {
 } from "@/models/interface/form.interface";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-function DepositForm({ onSubmit }: DepositFormProps) {
+function DepositForm({ onSubmit, error }: DepositFormProps) {
   const {
     register,
     handleSubmit,
@@ -42,6 +42,7 @@ function DepositForm({ onSubmit }: DepositFormProps) {
       </CardContent>
       <CardFooter className="flex justify-between">
         <Button type="submit">Deposit</Button>
+        {error && <span className="text-red-500 text-sm">{error}</span>}
       </CardFooter>
     </form>
   );

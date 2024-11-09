@@ -8,7 +8,7 @@ import {
   TransferFormProps,
 } from "@/models/interface/form.interface";
 
-function TransferForm({ onSubmit }: TransferFormProps) {
+function TransferForm({ onSubmit, error }: TransferFormProps) {
   const {
     register,
     handleSubmit,
@@ -70,6 +70,7 @@ function TransferForm({ onSubmit }: TransferFormProps) {
       </CardContent>
       <CardFooter className="flex justify-between">
         <Button type="submit">Transfer</Button>
+        {error && <span className="text-red-500 text-sm">{error}</span>}
       </CardFooter>
     </form>
   );
