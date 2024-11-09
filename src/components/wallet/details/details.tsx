@@ -33,6 +33,9 @@ function Details() {
               Latest Movements
             </h2>
             <ul className={styles.movements}>
+              {transactions.length === 0 && (
+                <small className="m-auto"> You do not have any movement</small>
+              )}
               {transactions
                 .slice()
                 .reverse()

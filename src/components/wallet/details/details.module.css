@@ -1,10 +1,12 @@
 .movements {
+  --height-overflow: 10rem;
   display: flex;
   flex-direction: column;
-  max-height: 10rem;
+  max-height: var(--height-overflow);
   overflow-y: auto;
   scrollbar-color: hsl(var(--muted-foreground)) transparent;
   margin-left: 40px;
+  min-height: var(--height-overflow);
 }
 
 .movements li {
