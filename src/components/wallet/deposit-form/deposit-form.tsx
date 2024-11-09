@@ -7,6 +7,7 @@ import {
   DepositFormProps,
 } from "@/models/interface/form.interface";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { SendHorizonalIcon } from "lucide-react";
 
 function DepositForm({ onSubmit }: DepositFormProps) {
   const {
@@ -22,7 +23,7 @@ function DepositForm({ onSubmit }: DepositFormProps) {
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)}>
       <CardContent>
-        <CardTitle>Deposit Form</CardTitle>
+        <CardTitle className="mb-4">Deposit Form</CardTitle>
         <div className="grid w-full items-center gap-4">
           <div className="flex flex-col space-y-1.5">
             <Label htmlFor="amount">Amount</Label>

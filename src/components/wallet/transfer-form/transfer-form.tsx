@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { CardContent, CardFooter } from "@/components/ui/card";
+import { CardContent, CardFooter, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -22,6 +22,7 @@ function TransferForm({ onSubmit }: TransferFormProps) {
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)}>
       <CardContent>
+        <CardTitle className="mb-4">Transfer money</CardTitle>
         <div className="grid w-full items-center gap-4">
           <div className="flex flex-col space-y-1.5">
             <Label htmlFor="fromUser">From Account</Label>
