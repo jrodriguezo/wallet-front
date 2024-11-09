@@ -1,9 +1,15 @@
-.home-page {
+.home {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   flex-direction: column;
+  width: 100%;
+}
+
+.card {
+  width: 100%;
+  max-width: 30rem;
 }
 
 @media (max-width: 768px) {

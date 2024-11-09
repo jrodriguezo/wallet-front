@@ -19,15 +19,8 @@
     --gap: 1rem;
     --small-gap: 0.5rem;
 
-    --bg-primary: hsl(0, 0%, 100%);
-    --bg-secondary: hsl(0, 0%, 7%);
-    --text-primary: hsl(0, 0%, 7%);
-    --text-secondary: hsl(0, 0%, 100%);
-    --text-gray: hsl(0, 0%, 7%);
-    --bg-gray: hsl(0, 0%, 43%);
-
-    --background: var(--bg-primary);
-    --foreground: var(--bg-secondary);
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;

@@ -4,12 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState } from "react";
 import styles from "@/pages/home/home.module.css";
-import DepositForm from "@/components/wallet/deposit-form/deposit-form";
-import TransferForm from "@/components/wallet/transfer-form/transfer-form";
-import { AuthHOC } from "@/layouts/auth-hoc/auth-hoc";
-import Details from "@/components/wallet/details/details";
 
-export function Home() {
+export function AuthHOC({ children }: any) {
   const [isLogin, setIsLogin] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const handleAuth = () => {
@@ -22,19 +18,18 @@ export function Home() {
     console.log("ey");
   };
 
+  if (isAuthenticated) return children;
+
   return (
     <section className={styles.home}>
       <Card className={styles.card}>
-        <AuthHOC>
-          <CardHeader className="flex flex-row justify-between align-middle">
-            <CardTitle>Coolest Wallet</CardTitle>
-          </CardHeader>
-          <article>
-            <Details />
-            <DepositForm />
-            <TransferForm />
-          </article>
-        </AuthHOC>
+        <CardHeader className="flex flex-row justify-between align-middle">
+          <CardTitle>Coolest Wallet</CardTitle>
+          <Button variant="secondary" onClick={handleAuth}>
+            {isLogin ? "Register" : "Login"}
+          </Button>
+        </CardHeader>
+        {isLogin ? <LoginForm onSubmit={handleLogin} /> : <RegisterForm />}
       </Card>
     </section>
   );
