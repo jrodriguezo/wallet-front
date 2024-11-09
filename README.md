@@ -8,7 +8,7 @@ Wallet App is a simple web application developed with React and TypeScript that 
 
 To develop and run the project on your local machine, follow these steps:
 
-Supported Node versions >= 16.15.1 and < 20.9.0
+Make sure you have Node.js installed (version >= 16.15.1 and < 20.9.0).
 
 1. **Clone the repository**:
 
@@ -38,11 +38,12 @@ Here are some useful commands you can use during development:
    ```bash
    npm run test
    ```
-   
    - The result must be similar to:
-   
- Test Files  3 passed (3)
-      Tests  7 passed (7)
+
+      ```   
+       Test Files  3 passed (3)
+            Tests  7 passed (7)
+      ```
 
 ## Technologies Used
 
