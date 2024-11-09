@@ -53,19 +53,27 @@ const operationsSlice = createSlice({
     },
     transfer: (state, action: PayloadAction<ExtendedTransferFromData>) => {
       const { amount, fromUser, toUser } = action.payload;
-      if (state.balance >= amount) {
-        state.errors[TransactionType.TRANSFER] = "";
-        state.balance -= amount;
-        state.transactions.push({
-          amount: (-amount).toString(),
-          from: fromUser,
-          to: toUser,
-          type: TransactionType.TRANSFER,
-        });
-      } else {
+
+      if (amount < 0) {
+        state.errors[TransactionType.TRANSFER] = "Amount must be possitive";
+        return;
+      }
+
+      if (state.balance < amount) {
         state.errors[TransactionType.TRANSFER] =
           "Insufficient balance for transfer";
+
+        return;
       }
+
+      state.errors[TransactionType.TRANSFER] = "";
+      state.balance -= amount;
+      state.transactions.push({
+        amount: (-amount).toString(),
+        from: fromUser,
+        to: toUser,
+        type: TransactionType.TRANSFER,
+      });
     },
   },
 });
