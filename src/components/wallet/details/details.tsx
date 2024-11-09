@@ -15,7 +15,7 @@ function Details() {
   return (
     <>
       <CardContent>
-        <div className="flex items-center space-x-4 rounded-md rounded-b-none border p-4">
+        <div className="flex items-center space-x-4 rounded-md p-4">
           <CircleDollarSign />
           <div className="flex-1 space-y-1">
             <h2 className="text-sm font-medium leading-none">Your account</h2>
@@ -27,7 +27,7 @@ function Details() {
             </p>
           </div>
         </div>
-        <div className="flex items-center space-x-4 rounded-md rounded-t-none p-4  bg-muted">
+        <div className="flex items-center space-x-4 rounded-md p-4  bg-muted">
           <div className="flex-1 space-y-1">
             <h2 className="ml-[40px]  text-sm font-bold leading-none">
               Latest Movements
@@ -69,7 +69,7 @@ function Details() {
                         >{`${isNegativeAmount ? "-" : "+"}${
                           CURRENCY.DOLLAR
                         }${Math.abs(Number(amount))}`}</small>
-                        <small>{balance}</small>
+                        <small className="font-bold">{`${CURRENCY.DOLLAR}${balance}`}</small>
                       </footer>
                     </li>
                   );
