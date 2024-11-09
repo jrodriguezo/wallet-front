@@ -33,7 +33,7 @@ Make sure you have Node.js installed (version >= 16.15.1 and < 20.9.0).
 ## Available Scripts for Testing
 Here are some useful commands you can use during development:
 
-1. **Run unit tests with React Testing Library**:
+1. **Run tests with React Testing Library**:
 
    ```bash
    npm run test
