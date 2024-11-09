@@ -2,16 +2,20 @@ import { Button } from "@/components/ui/button";
 import { CardContent, CardFooter, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useForm } from "react-hook-form";
+import {
+  DepositFormData,
+  DepositFormProps,
+} from "@/models/interface/form.interface";
+import { SubmitHandler, useForm } from "react-hook-form";
 
-function DepositForm({ onSubmit }: any) {
+function DepositForm({ onSubmit }: DepositFormProps) {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<DepositFormData>();
 
-  const handleFormSubmit = (data: any) => {
+  const handleFormSubmit: SubmitHandler<DepositFormData> = (data) => {
     onSubmit(data);
   };
 

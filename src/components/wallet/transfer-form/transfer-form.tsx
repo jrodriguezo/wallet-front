@@ -1,18 +1,21 @@
-import { Props } from "@/models/props";
 import { Button } from "@/components/ui/button";
 import { CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
+import {
+  TransferFormData,
+  TransferFormProps,
+} from "@/models/interface/form.interface";
 
-function TransferForm({ onSubmit }: any) {
+function TransferForm({ onSubmit }: TransferFormProps) {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<TransferFormData>();
 
-  const handleFormSubmit = (data: any) => {
+  const handleFormSubmit: SubmitHandler<TransferFormData> = (data) => {
     onSubmit(data);
   };
 
