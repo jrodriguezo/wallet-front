@@ -7,7 +7,6 @@ import {
   DepositFormProps,
 } from "@/models/interface/form.interface";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { SendHorizonalIcon } from "lucide-react";
 
 function DepositForm({ onSubmit }: DepositFormProps) {
   const {
@@ -33,7 +32,11 @@ function DepositForm({ onSubmit }: DepositFormProps) {
               placeholder="Type amount to deposit"
               {...register("amount", { required: true })}
             />
-            {errors.amount && <span>This field is required</span>}
+            {errors.amount && (
+              <span className="text-red-500 text-sm">
+                This field is required
+              </span>
+            )}
           </div>
         </div>
       </CardContent>

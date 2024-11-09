@@ -32,7 +32,11 @@ function TransferForm({ onSubmit }: TransferFormProps) {
               placeholder="Type the sender's account"
               {...register("fromUser", { required: true })}
             />
-            {errors.fromUser && <span>This field is required</span>}
+            {errors.fromUser && (
+              <span className="text-red-500 text-sm">
+                This field is required
+              </span>
+            )}
           </div>
           <div className="flex flex-col space-y-1.5">
             <Label htmlFor="toUser">To Account</Label>
@@ -42,7 +46,11 @@ function TransferForm({ onSubmit }: TransferFormProps) {
               placeholder="Type the recipient's account"
               {...register("toUser", { required: true })}
             />
-            {errors.toUser && <span>This field is required</span>}
+            {errors.toUser && (
+              <span className="text-red-500 text-sm">
+                This field is required
+              </span>
+            )}
           </div>
           <div className="flex flex-col space-y-1.5">
             <Label htmlFor="amount">Amount</Label>
@@ -52,7 +60,11 @@ function TransferForm({ onSubmit }: TransferFormProps) {
               placeholder="Type amount to transfer"
               {...register("amount", { required: true })}
             />
-            {errors.amount && <span>This field is required</span>}
+            {errors.amount && (
+              <span className="text-red-500 text-sm">
+                This field is required
+              </span>
+            )}
           </div>
         </div>
       </CardContent>
