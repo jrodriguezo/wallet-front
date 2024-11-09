@@ -1,0 +1,12 @@
+.global-layout {
+  position: relative;
+  inset: 0;
+}
+
+.global-layout main {
+  min-height: calc(100dvh);
+  width: 100%;
+  padding: var(--safe-area-x) var(--safe-area-y);
+  max-width: 1024px;
+  margin: 0 auto;
+}
