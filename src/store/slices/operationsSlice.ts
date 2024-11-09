@@ -4,22 +4,27 @@ import {
   ExtendedTransferFromData,
 } from "@/models/interface/form.interface";
 import { TransactionType } from "@/models/enums/operations.enum";
-import { Amount } from "@/models/types/form.type";
+import {
+  Account,
+  Amount,
+  AmountConserveSign,
+  Balance,
+} from "@/models/types/form.type";
 import { generateWalletAddress } from "@/components/wallet/details/utils";
 
-type type = TransactionType.DEPOSIT | TransactionType.TRANSFER;
+type Type = TransactionType.DEPOSIT | TransactionType.TRANSFER;
 
 interface OperationsState {
-  address: string;
+  address: Account;
   balance: Amount;
   transactions: Array<{
-    balance: string;
-    amount: string;
-    from?: string;
-    to?: string;
-    type: type;
+    balance: Balance;
+    amount: AmountConserveSign;
+    from?: Account;
+    to?: Account;
+    type: Type;
   }>;
-  errors: { [key in TransactionType]: string };
+  errors: { [key in TransactionType]: Pick<Error, "message">["message"] };
 }
 
 const initialState: OperationsState = {
@@ -64,7 +69,6 @@ const operationsSlice = createSlice({
       if (state.balance < amount) {
         state.errors[TransactionType.TRANSFER] =
           "Insufficient balance for transfer";
-
         return;
       }
 
