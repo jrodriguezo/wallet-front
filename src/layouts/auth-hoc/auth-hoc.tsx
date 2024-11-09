@@ -12,10 +12,13 @@ export function AuthHOC({ children }: any) {
     setIsLogin((prev) => !prev);
   };
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleLogin = (data: any) => {
     setIsAuthenticated(true);
-    console.log("ey");
+    console.log({ ["login form"]: data });
+  };
+
+  const handleRegister = (data: any) => {
+    console.log({ ["register form"]: data });
   };
 
   if (isAuthenticated) return children;
@@ -29,7 +32,11 @@ export function AuthHOC({ children }: any) {
             {isLogin ? "Register" : "Login"}
           </Button>
         </CardHeader>
-        {isLogin ? <LoginForm onSubmit={handleLogin} /> : <RegisterForm />}
+        {isLogin ? (
+          <LoginForm onSubmit={handleLogin} />
+        ) : (
+          <RegisterForm onSubmit={handleRegister} />
+        )}
       </Card>
     </section>
   );

@@ -1,27 +1,52 @@
-import { Props } from "@/models/props";
-
+import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-function LoginForm(props: any) {
+function LoginForm({ onSubmit }: any) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const handleFormSubmit = (data: any) => {
+    onSubmit(data);
+  };
+
   return (
     <>
-      <form onSubmit={props.onSubmit}>
+      <form onSubmit={handleSubmit(handleFormSubmit)}>
         <CardContent>
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="email">Email</Label>
-              <Input type="email" id="email" placeholder="Type your email" />
+              <Input
+                type="email"
+                id="email"
+                placeholder="Type your email"
+                {...register("email", { required: "Email is required" })}
+              />
+              {errors.email && (
+                <span className="text-red-500 text-sm">
+                  {errors.email.message?.toString()}
+                </span>
+              )}
             </div>
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="password">Password</Label>
               <Input
-                type="email"
+                type="password"
                 id="password"
                 placeholder="Type your password"
+                {...register("password", { required: "Password is required" })}
               />
+              {errors.password && (
+                <span className="text-red-500 text-sm">
+                  {errors.password.message?.toString()}
+                </span>
+              )}
             </div>
           </div>
         </CardContent>

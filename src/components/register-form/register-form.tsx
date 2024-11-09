@@ -1,50 +1,78 @@
-import { Props } from "@/models/props";
-
+import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-import {
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
-function RegisterForm(props: Props) {
+function RegisterForm({ onSubmit }: any) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const handleFormSubmit = (data: any) => {
+    onSubmit(data);
+  };
+
   return (
     <>
-      <CardContent>
-        <form>
+      <form onSubmit={handleSubmit(handleFormSubmit)}>
+        <CardContent>
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="name">Name</Label>
-              <Input id="name" placeholder="Type your name" />
+              <Input
+                id="name"
+                placeholder="Type your name"
+                {...register("name", { required: "Name is required" })}
+              />
+              {errors.name && (
+                <span className="text-red-500 text-sm">
+                  {errors.name.message?.toString()}
+                </span>
+              )}
             </div>
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="email">Email</Label>
-              <Input type="email" id="email" placeholder="Type your email" />
+              <Input
+                type="email"
+                id="email"
+                placeholder="Type your email"
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: "Email is not valid",
+                  },
+                })}
+              />
+              {errors.email && (
+                <span className="text-red-500 text-sm">
+                  {errors.email.message?.toString()}
+                </span>
+              )}
             </div>
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="password">Password</Label>
               <Input
-                type="email"
+                type="password"
                 id="password"
                 placeholder="Type your password"
+                {...register("password", { required: "Password is required" })}
               />
+              {errors.password && (
+                <span className="text-red-500 text-sm">
+                  {errors.password.message?.toString()}
+                </span>
+              )}
             </div>
           </div>
-        </form>
-      </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button>Register</Button>
-      </CardFooter>
+        </CardContent>
+        <CardFooter className="flex justify-between">
+          <Button type="submit">Register</Button>
+        </CardFooter>
+      </form>
     </>
   );
 }
