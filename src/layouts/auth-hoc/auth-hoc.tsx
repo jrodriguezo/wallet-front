@@ -2,36 +2,13 @@ import LoginForm from "@/components/login-form/login-form";
 import RegisterForm from "@/components/register-form/register-form";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import { useState } from "react";
-import styles from "@/pages/home/home.module.css";
 import { Props } from "@/models/props";
-import {
-  LoginFormData,
-  RegisterFormData,
-} from "@/models/interface/form.interface";
-import { useDispatch, useSelector } from "react-redux";
-import { login } from "@/store/slices/authSlice";
-import { RootState } from "@/store";
+import { useAuth } from "@/hooks/useAuth";
+import styles from "@/pages/home/home.module.css";
 
 export function AuthHOC({ children }: Pick<Props, "children">) {
-  const [isLogin, setIsLogin] = useState(true);
-  const isAuthenticated = useSelector(
-    (state: RootState) => state.auth.isAuthenticated
-  );
-  const dispatch = useDispatch();
-
-  const handleAuth = () => {
-    setIsLogin((prev) => !prev);
-  };
-
-  const handleLogin = (data: LoginFormData) => {
-    console.log({ ["login form"]: data });
-    dispatch(login(data));
-  };
-
-  const handleRegister = (data: RegisterFormData) => {
-    console.log({ ["register form"]: data });
-  };
+  const { isLogin, isAuthenticated, handleLogin, handleRegister, handleAuth } =
+    useAuth();
 
   if (isAuthenticated) return children;
 
