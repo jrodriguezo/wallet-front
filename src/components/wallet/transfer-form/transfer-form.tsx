@@ -25,7 +25,7 @@ function TransferForm({ onSubmit }: any) {
             <Input
               type="text"
               id="fromUser"
-              placeholder="Type the sender's email"
+              placeholder="Type the sender's account"
               {...register("fromUser", { required: true })}
             />
             {errors.fromUser && <span>This field is required</span>}
@@ -35,7 +35,7 @@ function TransferForm({ onSubmit }: any) {
             <Input
               type="text"
               id="toUser"
-              placeholder="Type the recipient's email"
+              placeholder="Type the recipient's account"
               {...register("toUser", { required: true })}
             />
             {errors.toUser && <span>This field is required</span>}
