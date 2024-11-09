@@ -34,7 +34,9 @@ function Details() {
             </h2>
             <ul className={styles.movements}>
               {transactions.length === 0 && (
-                <small className="m-auto"> You do not have any movement</small>
+                <small className="m-auto">
+                  No transactions have been recorded in your account history.
+                </small>
               )}
               {transactions
                 .slice()
